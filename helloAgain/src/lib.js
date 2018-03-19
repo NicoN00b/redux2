@@ -1,5 +1,7 @@
 import React from 'react';
 import text from './titles.json'
+import './css/goodbye.scss'
+import './css/hello.css'
 
 export const hello = (
     <h1 id='title'
