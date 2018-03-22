@@ -5,6 +5,10 @@ import  { DayCount } from './components/dayCounter'
 window.React = React
 
 render(
-    <DayCount />,
+    <DayCount total={6}
+              bball={2}
+              bike={3}
+              misc={1}
+              goal={30}/>,
     document.getElementById('react-container')
 )
