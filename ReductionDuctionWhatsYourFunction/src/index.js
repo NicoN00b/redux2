@@ -1,11 +1,22 @@
 import C from './constants'
 import appReducer from './store/reducers'
-import initialState from './initialState.json'
+// import initialState from './initialState.json'
 import { createStore } from 'redux'
+
+const initialState = JSON.parse(localStorage['redux-store']) ?
+    JSON.parse(localStorage['redux-store']) :
+    {}
 
 const store = createStore(appReducer, initialState)
 
-console.log('initial state', store.getState());
+window.store = store
+
+
+store.subscribe(() => {
+
+  const state = JSON.stringify(store.getState())
+  localStorage['redux-store'] = state
+})
 
 store.dispatch({
   type: C.ADD_DAY,
@@ -17,4 +28,7 @@ store.dispatch({
   }
 })
 
-console.log('next state', store.getState());
+store.dispatch({
+  type: C.SET_GOAL,
+  payload: 2
+})
